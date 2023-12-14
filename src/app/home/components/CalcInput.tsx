@@ -1,7 +1,7 @@
 interface CalcInputProps {
-  type: "bill" | "percent" | "people";
+  type?: "bill" | "percent" | "people";
 
-  data: number;
+  data?: number;
 }
 
 const CalcInput = ({ type, data }: CalcInputProps) => {

@@ -1,11 +1,11 @@
 interface CalcButtonProps {
-  type: "reset" | "percent";
-  isActive: boolean;
+  type?: "reset" | "percent";
+  isActive?: boolean;
   data: number;
-  onClick: () => void;
+  onClick?: () => void;
 }
 const CalcButton = ({ type, isActive, data, onClick }: CalcButtonProps) => {
-  return <div>CalcButton</div>;
+  return <div>{data}</div>;
 };
 
 export default CalcButton;
