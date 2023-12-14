@@ -1,9 +1,15 @@
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { DollarSign, GroupIcon, Percent, UserRound } from "lucide-react";
+import { DollarSign, Percent, UserRound } from "lucide-react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 interface CalcInputProps {
@@ -12,22 +18,29 @@ interface CalcInputProps {
   data?: number;
 }
 
+const formSchema = z.object({
+  username: z.string().min(2).max(50),
+});
+
 const CalcInput = ({ type, data }: CalcInputProps) => {
-  const formSchema = z.object({
-    content: z.string().min(10),
-  });
   const form = useForm<z.infer<typeof formSchema>>({
-    defaultValues: {
-      content: "",
-    },
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: "",
+    },
   });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
+  }
+
   return (
     <div>
       <Form {...form}>
-        <form onSubmit={() => {}}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
-            name="content"
+            control={form.control}
+            name="username"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
@@ -49,9 +62,12 @@ const CalcInput = ({ type, data }: CalcInputProps) => {
                     )}
                   </div>
                 </FormControl>
+
+                <FormMessage />
               </FormItem>
             )}
           />
+          <Button type="submit">Submit</Button>
         </form>
       </Form>
     </div>
