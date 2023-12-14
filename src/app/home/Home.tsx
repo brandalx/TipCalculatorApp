@@ -10,12 +10,12 @@ const Home = () => {
         <div className="flex flex-col">
           {/* left side */}
           <div>
-            <CalcInput />
+            <CalcInput type="bill" />
           </div>
 
           <div>
             {TIPS_AMOUNT.map((tip) => (
-              <CalcButton key={tip} type="percent" data={tip} />
+              <CalcButton key={tip} data={tip} />
             ))}
 
             <CalcInput type="percent" />
