@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 const AppRouter = () => {
   return (
     <>
-      <body className="h-full">
+      <body className="h-full font-mono">
         <main className="min-h-screen">
           <Header />
 

@@ -67,7 +67,7 @@ const CalcInput = ({ type, data }: CalcInputProps) => {
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+          {/* <Button type="submit">Submit</Button> */}
         </form>
       </Form>
     </div>
