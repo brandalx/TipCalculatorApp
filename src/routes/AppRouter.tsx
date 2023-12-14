@@ -13,7 +13,7 @@ const AppRouter = () => {
           <div className="flex-grow flex-1">
             <BrowserRouter>
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/*" element={<Home />} />
               </Routes>
             </BrowserRouter>
           </div>
