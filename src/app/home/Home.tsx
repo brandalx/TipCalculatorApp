@@ -2,9 +2,9 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div>
-      <div>
-        <div>
+    <div className="flex justify-center items-center container h-[100vh]">
+      <div className="flex">
+        <div className="flex flex-col">
           {/* left side */}
           <div>input bill</div>
 

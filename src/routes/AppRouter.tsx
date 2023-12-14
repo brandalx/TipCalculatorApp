@@ -10,13 +10,12 @@ const AppRouter = () => {
       <body className="h-full">
         <main className="min-h-screen">
           <Header />
-          <div className="flex-grow flex-1">
-            <BrowserRouter>
-              <Routes>
-                <Route path="/*" element={<Home />} />
-              </Routes>
-            </BrowserRouter>
-          </div>
+
+          <BrowserRouter>
+            <Routes>
+              <Route path="/*" element={<Home />} />
+            </Routes>
+          </BrowserRouter>
         </main>
         <Footer />
       </body>
