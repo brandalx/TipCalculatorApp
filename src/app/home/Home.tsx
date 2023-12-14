@@ -1,5 +1,5 @@
 import React from "react";
-
+import { TIPS_AMOUNT } from "@/lib/tips";
 const Home = () => {
   return (
     <div className="flex justify-center items-center container h-[100vh]">
