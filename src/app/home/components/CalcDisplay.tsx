@@ -1,6 +1,8 @@
-import React from "react";
-
-const CalcDisplay = () => {
+interface CalcDisplayProps {
+  tipData: number;
+  total: number;
+}
+const CalcDisplay = ({ tipData, total }: CalcDisplayProps) => {
   return <div>CalcDisplay</div>;
 };
 
