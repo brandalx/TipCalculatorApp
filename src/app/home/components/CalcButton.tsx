@@ -7,14 +7,26 @@ interface CalcButtonProps {
   data?: number;
   onClick?: () => void;
   setPercent?: Dispatch<SetStateAction<number>>;
-  percent: number;
+  percent?: number;
+  handleReset?: () => void;
 }
-const CalcButton = ({ type, data, setPercent, percent }: CalcButtonProps) => {
+const CalcButton = ({
+  type,
+  data,
+  setPercent,
+  percent,
+  handleReset,
+}: CalcButtonProps) => {
   return (
     <Button
       onClick={() => {
-        if (data !== undefined && data > 0) {
-          setPercent(data);
+        if (type === "percent") {
+          if (data !== undefined && data > 0 && setPercent) {
+            setPercent(data);
+          }
+        }
+        if (type === "reset") {
+          handleReset();
         }
       }}
       className={cn(

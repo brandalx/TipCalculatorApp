@@ -23,7 +23,15 @@ const Home = () => {
   };
   useEffect(() => {
     handleCalculate();
-  }, [bill, percent, people]);
+  }, [bill, percent, people, totalResult, tipResult]);
+
+  const handleReset = () => {
+    setBill(0);
+    setPeople(1);
+    setPercent(0);
+    setTipResult(0);
+    setTotalResult(0);
+  };
   return (
     <div className="flex justify-center items-center container max-w-[900px] h-[100vh]">
       <div className="bg-white p-10 rounded-3xl">
@@ -71,7 +79,11 @@ const Home = () => {
           <div>
             {/* right side */}
             <div className="w-full h-full ">
-              <CalcDisplay tipResult={tipResult} totalResult={totalResult} />
+              <CalcDisplay
+                handleReset={handleReset}
+                tipResult={tipResult}
+                totalResult={totalResult}
+              />
             </div>
           </div>
         </div>

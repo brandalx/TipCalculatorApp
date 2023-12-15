@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DollarSign, Percent, UserRound } from "lucide-react";
+import { useEffect } from "react";
 import { useForm, useFormState } from "react-hook-form";
 import z from "zod";
 interface CalcInputProps {
@@ -46,6 +47,10 @@ const CalcInput = ({
   });
 
   const { errors } = useFormState({ control: form.control });
+
+  useEffect(() => {
+    form.reset({ username: data });
+  }, [data, form.reset]);
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setData(values.username);
