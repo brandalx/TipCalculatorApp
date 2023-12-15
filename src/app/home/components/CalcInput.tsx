@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DollarSign, Percent, UserRound } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { useForm, useFormState } from "react-hook-form";
 import z from "zod";
 interface CalcInputProps {
   type?: "bill" | "percent" | "people";
@@ -37,6 +37,8 @@ const CalcInput = ({ type, data, label }: CalcInputProps) => {
     },
   });
 
+  const { errors } = useFormState({ control: form.control });
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
   }
@@ -51,28 +53,40 @@ const CalcInput = ({ type, data, label }: CalcInputProps) => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <div className="input-group relative">
+                  <div className="input-group ">
                     <div className="">
                       {type !== "percent" && (
-                        <div className="flex">
+                        <div className="flex justify-between my-2">
                           <FormLabel className="text-[#6A7878]">
                             {label}
                           </FormLabel>
                           <FormMessage className="text-[#ff6857] text-xs" />
+
+                          <div className="text-xs opacity-0">0</div>
                         </div>
                       )}
                     </div>
-                    <div>
-                      <Input type="number" className="ps-[30px]" {...field} />
-                      {type === "people" && (
-                        <UserRound
-                          fill="#A0B9BD"
-                          className="h-5 w-5 absolute top-9 left-2 text-[#A0B9BD]"
-                        />
-                      )}
+                    <div className="relative">
+                      <Input
+                        min={0}
+                        type="number"
+                        className={cn(
+                          "ps-[30px]  focus-visible:ring-0 border-2 border-[#5BABA2]",
+                          errors.username && "border-red-500 "
+                        )}
+                        {...field}
+                      />
+                      <div className="absolute top-2.5 left-2">
+                        {type === "people" && (
+                          <UserRound
+                            fill="#A0B9BD"
+                            className="h-5 w-5  text-[#A0B9BD]"
+                          />
+                        )}
+                      </div>
 
                       {type === "bill" && (
-                        <DollarSign className="h-5 w-5 absolute top-9 left-2 text-[#A0B9BD]" />
+                        <DollarSign className="h-5 w-5 absolute top-2.5 left-2 text-[#A0B9BD]" />
                       )}
 
                       {type === "percent" && (
