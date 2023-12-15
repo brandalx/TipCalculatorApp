@@ -42,7 +42,13 @@ const Home = () => {
             <p className="text-[#6A7878]">Select Tip %</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {TIPS_AMOUNT.map((tip) => (
-                <CalcButton type="percent" key={tip} data={tip} />
+                <CalcButton
+                  percent={percent}
+                  setPercent={setPercent}
+                  type="percent"
+                  key={tip}
+                  data={tip}
+                />
               ))}
 
               <CalcInput
