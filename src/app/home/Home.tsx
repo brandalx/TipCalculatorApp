@@ -5,6 +5,7 @@ import CalcButton from "./components/CalcButton";
 import CalcDisplay from "./components/CalcDisplay";
 import { calculateTip } from "@/lib/calculateTip";
 const Home = () => {
+  //defining global states for values
   const [bill, setBill] = useState(0);
   const [percent, setPercent] = useState(0);
 
@@ -22,10 +23,13 @@ const Home = () => {
       setTotalResult(calculate.total);
     }
   };
+
+  // calculation on each change of the value
   useEffect(() => {
     handleCalculate();
   }, [bill, percent, people, totalResult, tipResult]);
 
+  // function for resetting the values of global states
   const handleReset = () => {
     setBill(0);
     setPeople(1);
