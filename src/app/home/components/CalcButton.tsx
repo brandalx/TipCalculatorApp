@@ -9,7 +9,7 @@ interface CalcButtonProps {
   setPercent?: Dispatch<SetStateAction<number>>;
   percent?: number;
   handleReset?: () => void;
-  totalResult: number;
+  totalResult?: number;
 }
 const CalcButton = ({
   type,
