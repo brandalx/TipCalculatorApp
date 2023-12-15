@@ -48,4 +48,4 @@ This project is a split calculator app, named " Splitter", built using a modern 
 
 The Splitter app showcases the power of modern web technologies in creating a practical, user-friendly application.
 
-[Live project link](https://netlify.com)
+[Live project link](https://brandnolansplittercalculator.netlify.app/)

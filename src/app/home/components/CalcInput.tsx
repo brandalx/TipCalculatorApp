@@ -105,7 +105,7 @@ const CalcInput = ({
                 </FormControl>
                 {type === "percent" && (
                   <div>
-                    <FormMessage className="text-[#ff6857] text-xs " />
+                    <FormMessage className="text-[#ff6857] text-xs p-2 " />
                   </div>
                 )}
               </FormItem>
