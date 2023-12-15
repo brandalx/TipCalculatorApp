@@ -5,7 +5,7 @@ import CalcButton from "./components/CalcButton";
 import CalcDisplay from "./components/CalcDisplay";
 const Home = () => {
   return (
-    <div className="flex justify-center items-center container max-w-2xl h-[100vh]">
+    <div className="flex justify-center items-center container max-w-[900px] h-[100vh]">
       <div className="bg-white p-10 rounded-3xl">
         <div className=" grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="grid grid-cols-1 gap-4 py-2">
