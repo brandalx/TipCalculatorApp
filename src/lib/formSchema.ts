@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+// function for validation of data passed into the schema
+
 export const getFormSchema = (type: string) => {
   switch (type) {
     case "bill":

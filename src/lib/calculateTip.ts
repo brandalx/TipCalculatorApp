@@ -1,3 +1,4 @@
+//function for calculation of tip amount and total per person
 export function calculateTip(
   bill: number,
   numberOfPeople: number,

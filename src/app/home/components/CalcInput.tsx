@@ -14,6 +14,8 @@ import { DollarSign, Percent, UserRound } from "lucide-react";
 import { useEffect } from "react";
 import { useForm, useFormState } from "react-hook-form";
 import z from "zod";
+
+//main input reusable component for bill, tip percentage, amount of people
 interface CalcInputProps {
   handleChange: () => void;
   type: "bill" | "percent" | "people";
@@ -29,7 +31,9 @@ const CalcInput = ({
   setData,
   handleChange,
 }: CalcInputProps) => {
+  // usage of form schema for different input
   const formSchema = getFormSchema(type);
+  //defining of form with zod, zodresolver
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,15 +43,18 @@ const CalcInput = ({
 
   const { errors } = useFormState({ control: form.control });
 
+  //on reset
+
   useEffect(() => {
     form.reset({ value: data });
   }, [data, form.reset]);
 
+  //on submit calculation
   function onSubmit(values: z.infer<typeof formSchema>) {
     setData(values.value);
     handleChange();
   }
-
+  //reusable form input
   return (
     <div>
       <Form {...form}>
@@ -111,7 +118,6 @@ const CalcInput = ({
               </FormItem>
             )}
           />
-          {/* <Button type="submit">Submit</Button> */}
         </form>
       </Form>
     </div>

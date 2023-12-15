@@ -3,6 +3,8 @@ import Header from "@/app/header/Header";
 import Home from "@/app/home/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+//app router
+
 const AppRouter = () => {
   return (
     <>
