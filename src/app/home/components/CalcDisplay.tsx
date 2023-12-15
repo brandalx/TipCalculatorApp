@@ -1,4 +1,6 @@
+import { Button } from "@/components/ui/button";
 import ClacDisplayData from "./ClacDisplayData";
+import CalcButton from "./CalcButton";
 
 interface CalcDisplayProps {
   tipData?: number;
@@ -17,7 +19,9 @@ const CalcDisplay = ({ tipData, total }: CalcDisplayProps) => {
           </div>
         </div>
 
-        <div className="">button</div>
+        <div className="flex justify-center p-5">
+          <CalcButton data={0} type="reset" />
+        </div>
       </div>
     </div>
   );

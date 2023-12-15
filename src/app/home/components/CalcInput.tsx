@@ -71,7 +71,7 @@ const CalcInput = ({ type, data, label }: CalcInputProps) => {
                         min={0}
                         type="number"
                         className={cn(
-                          "ps-[30px]  focus-visible:ring-0 border-2 border-[#5BABA2]",
+                          "ps-[30px]  focus-visible:ring-0  bg-[#F3F8FB] font-bold text-[#00474B] border-2 border-[#5BABA2]",
                           errors.username && "border-red-500 "
                         )}
                         {...field}
