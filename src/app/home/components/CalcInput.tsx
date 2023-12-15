@@ -78,7 +78,7 @@ const CalcInput = ({
                         type="number"
                         className={cn(
                           "ps-[30px]  focus-visible:ring-0  bg-[#F3F8FB] font-bold text-[#00474B] border-2 border-[#5BABA2]",
-                          errors.username && "border-red-500 "
+                          errors.value && "border-red-500 "
                         )}
                         {...field}
                       />
