@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction } from "react";
 
+// generic reusable button component for setting percents or resetting the values.
 interface CalcButtonProps {
   type?: "reset" | "percent";
   data?: number;

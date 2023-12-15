@@ -1,6 +1,8 @@
 import ClacDisplayData from "./ClacDisplayData";
 import CalcButton from "./CalcButton";
 
+//display component for displaying resutls of the calculation
+
 interface CalcDisplayProps {
   tipResult: number;
   totalResult: number;

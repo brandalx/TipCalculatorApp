@@ -1,3 +1,4 @@
+// reusable component for displaying data of tips and total
 interface CalcDisplayDataProps {
   result: number;
   type: "tip" | "total";
