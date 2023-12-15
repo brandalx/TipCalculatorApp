@@ -1,15 +1,20 @@
 import React from "react";
-
-const ClacDisplayData = () => {
+interface CalcDisplayDataProps {
+  result: number;
+  type: "tip" | "total";
+}
+const ClacDisplayData = ({ result, type }: CalcDisplayDataProps) => {
   return (
     <div className="flex justify-between px-4">
       <div>
-        <h4 className="text-white">Tip amount</h4>
+        <h4 className="text-white">
+          {type === "tip" ? "Tip Amount" : "Total"}
+        </h4>
         <p className="text-sm text-[#6DA0A4]">/ person</p>
       </div>
 
       <div>
-        <h2 className="text-xl text-[#1FC2AA]">$0.00</h2>
+        <h2 className="text-xl text-[#1FC2AA]">$ {result}</h2>
       </div>
     </div>
   );

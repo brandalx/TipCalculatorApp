@@ -10,16 +10,20 @@ const Home = () => {
 
   const [people, setPeople] = useState(1);
 
+  const [tipResult, setTipResult] = useState<number>(0);
+  const [totalResult, setTotalResult] = useState<number>(0);
+
   const handleCalculate = () => {
-    return calculateTip(bill, people, percent);
+    const calculate = calculateTip(bill, people, percent);
+
+    if (typeof calculate !== "string") {
+      setTipResult(calculate.tipAmount);
+      setTotalResult(calculate.total);
+    }
   };
-
   useEffect(() => {
-    console.table({ bill, people, percent });
-
-    console.log(calculateTip(bill, people, percent));
-  }, [bill, people, percent]);
-
+    handleCalculate();
+  }, [bill, percent, people]);
   return (
     <div className="flex justify-center items-center container max-w-[900px] h-[100vh]">
       <div className="bg-white p-10 rounded-3xl">
@@ -61,7 +65,7 @@ const Home = () => {
           <div>
             {/* right side */}
             <div className="w-full h-full ">
-              <CalcDisplay />
+              <CalcDisplay tipResult={tipResult} totalResult={totalResult} />
             </div>
           </div>
         </div>
