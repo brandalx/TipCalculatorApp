@@ -10,9 +10,9 @@ const Home = () => {
         <div className="grid grid-cols-1 gap-4">
           {/* left side */}
           <div>
-            <CalcInput type="bill" />
+            <CalcInput label="Bill" type="bill" />
           </div>
-
+          <p className="text-[#6A7878]">Select Tip %</p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {TIPS_AMOUNT.map((tip) => (
               <CalcButton key={tip} data={tip} />
@@ -21,7 +21,7 @@ const Home = () => {
             <CalcInput type="percent" />
           </div>
           <div>
-            <CalcInput type="people" />
+            <CalcInput label="Number of People" type="people" />
           </div>
         </div>
         <div>
