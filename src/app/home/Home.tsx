@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TIPS_AMOUNT } from "@/lib/tips";
 import CalcInput from "./components/CalcInput";
 import CalcButton from "./components/CalcButton";
@@ -10,13 +10,15 @@ const Home = () => {
 
   const [people, setPeople] = useState(1);
 
-  const handleCalculate = (
-    billValue: number,
-    percentValue: number,
-    peopleValue: number
-  ) => {
-    calculateTip(billValue, peopleValue, percentValue);
+  const handleCalculate = () => {
+    return calculateTip(bill, people, percent);
   };
+
+  useEffect(() => {
+    console.table({ bill, people, percent });
+
+    console.log(calculateTip(bill, people, percent));
+  }, [bill, people, percent]);
 
   return (
     <div className="flex justify-center items-center container max-w-[900px] h-[100vh]">
@@ -26,6 +28,7 @@ const Home = () => {
             {/* left side */}
             <div>
               <CalcInput
+                handleChange={handleCalculate}
                 data={bill}
                 setData={setBill}
                 label="Bill"
@@ -38,10 +41,16 @@ const Home = () => {
                 <CalcButton type="percent" key={tip} data={tip} />
               ))}
 
-              <CalcInput type="percent" setData={setPercent} data={percent} />
+              <CalcInput
+                handleChange={handleCalculate}
+                type="percent"
+                setData={setPercent}
+                data={percent}
+              />
             </div>
             <div>
               <CalcInput
+                handleChange={handleCalculate}
                 label="Number of People"
                 type="people"
                 setData={setPeople}

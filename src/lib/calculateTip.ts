@@ -3,7 +3,7 @@ export function calculateTip(
   numberOfPeople: number,
   tipPercent: number
 ): string | { tipAmount: number; total: number } {
-  if (bill <= 0 || numberOfPeople <= 1 || tipPercent < 0 || tipPercent > 100) {
+  if (bill <= 0 || numberOfPeople < 1 || tipPercent < 0 || tipPercent > 100) {
     return "Error: Invalid values";
   }
 

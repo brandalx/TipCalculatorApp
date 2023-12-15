@@ -14,6 +14,7 @@ import { DollarSign, Percent, UserRound } from "lucide-react";
 import { useForm, useFormState } from "react-hook-form";
 import z from "zod";
 interface CalcInputProps {
+  handleChange: () => void;
   type?: "bill" | "percent" | "people";
   label?: string;
   data?: number;
@@ -30,11 +31,17 @@ const formSchema = z.object({
   ),
 });
 
-const CalcInput = ({ type, data, label, setData }: CalcInputProps) => {
+const CalcInput = ({
+  type,
+  data,
+  label,
+  setData,
+  handleChange,
+}: CalcInputProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: 0,
+      username: data,
     },
   });
 
@@ -42,7 +49,8 @@ const CalcInput = ({ type, data, label, setData }: CalcInputProps) => {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setData(values.username);
-    console.log(data);
+
+    handleChange();
   }
 
   return (
