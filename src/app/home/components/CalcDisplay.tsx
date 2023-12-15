@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import ClacDisplayData from "./ClacDisplayData";
 import CalcButton from "./CalcButton";
 
@@ -26,7 +25,12 @@ const CalcDisplay = ({
         </div>
 
         <div className="flex justify-center p-5">
-          <CalcButton handleReset={handleReset} data={0} type="reset" />
+          <CalcButton
+            totalResult={totalResult}
+            handleReset={handleReset}
+            data={0}
+            type="reset"
+          />
         </div>
       </div>
     </div>

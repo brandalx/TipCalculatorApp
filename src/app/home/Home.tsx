@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { TIPS_AMOUNT } from "@/lib/tips";
 import CalcInput from "./components/CalcInput";
 import CalcButton from "./components/CalcButton";
@@ -10,7 +10,8 @@ const Home = () => {
 
   const [people, setPeople] = useState(1);
 
-  const [tipResult, setTipResult] = useState<number>(0);
+  const [tipResult, setTipResult] = useState<number>(0.0);
+
   const [totalResult, setTotalResult] = useState<number>(0);
 
   const handleCalculate = () => {
@@ -33,8 +34,12 @@ const Home = () => {
     setTotalResult(0);
   };
   return (
-    <div className="flex justify-center items-center container max-w-[900px] h-[100vh]">
-      <div className="bg-white p-10 rounded-3xl">
+    <div className="flex flex-col justify-center items-center container max-w-[900px] h-[100vh] w-full relative">
+      <div className="absolute top-[15%] text-2xl">
+        <h1>SPLI</h1>
+        <h1>TTER</h1>
+      </div>
+      <div className="bg-white p-10 rounded-3xl w-full">
         <div className=" grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="grid grid-cols-1 gap-4 py-2">
             {/* left side */}
@@ -47,7 +52,7 @@ const Home = () => {
                 type="bill"
               />
             </div>
-            <p className="text-[#6A7878]">Select Tip %</p>
+            <p className="text-[#6A7878] text-sm">Select Tip %</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {TIPS_AMOUNT.map((tip) => (
                 <CalcButton

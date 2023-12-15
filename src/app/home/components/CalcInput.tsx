@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -63,7 +62,7 @@ const CalcInput = ({
                     <div className="">
                       {type !== "percent" && (
                         <div className="flex justify-between my-2">
-                          <FormLabel className="text-[#6A7878]">
+                          <FormLabel className="text-[#6A7878] text-sm">
                             {label}
                           </FormLabel>
                           <FormMessage className="text-[#ff6857] text-xs" />
@@ -74,14 +73,17 @@ const CalcInput = ({
                     </div>
                     <div className="relative">
                       <Input
+                        max={type === "percent" ? 100 : 999999999}
                         min={0}
+                        step={type === "people" ? "1" : "any"}
                         type="number"
                         className={cn(
-                          "ps-[30px]  focus-visible:ring-0  bg-[#F3F8FB] font-bold text-[#00474B] border-2 border-[#5BABA2]",
+                          "text-end spinner-none text-lg px-[20px] focus-visible:ring-0 bg-[#F3F8FB] font-bold text-[#00474B] border-2 border-[#5BABA2]",
                           errors.value && "border-red-500 "
                         )}
                         {...field}
                       />
+
                       <div className="absolute top-2.5 left-2">
                         {type === "people" && (
                           <UserRound
@@ -103,7 +105,7 @@ const CalcInput = ({
                 </FormControl>
                 {type === "percent" && (
                   <div>
-                    <FormMessage className="text-[#ff6857] text-xs" />
+                    <FormMessage className="text-[#ff6857] text-xs " />
                   </div>
                 )}
               </FormItem>

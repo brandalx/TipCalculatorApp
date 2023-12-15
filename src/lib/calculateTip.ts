@@ -7,9 +7,9 @@ export function calculateTip(
     return "Error: Invalid values";
   }
 
-  const tipAmount = bill * (tipPercent / 100);
-  const total = bill + tipAmount;
-  const totalPerPerson = total / numberOfPeople;
+  const tipAmount = (bill * (tipPercent / 100)) / numberOfPeople;
+  const totalBillWithTip = bill + tipAmount * numberOfPeople;
+  const totalPerPerson = totalBillWithTip / numberOfPeople;
 
   return {
     tipAmount: parseFloat(tipAmount.toFixed(2)),

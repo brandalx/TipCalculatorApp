@@ -1,13 +1,12 @@
 import Footer from "@/app/footer/Footer";
 import Header from "@/app/header/Header";
 import Home from "@/app/home/Home";
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const AppRouter = () => {
   return (
     <>
-      <body className="h-full font-mono bg-[#C5E4E7]">
+      <div className="h-full font-mono bg-[#C5E4E7]">
         <main className="min-h-screen">
           <Header />
 
@@ -18,7 +17,7 @@ const AppRouter = () => {
           </BrowserRouter>
         </main>
         <Footer />
-      </body>
+      </div>
     </>
   );
 };

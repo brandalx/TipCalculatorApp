@@ -27,7 +27,7 @@ export const getFormSchema = (type: string) => {
             value = value.toString();
           }
           return typeof value === "string" ? parseFloat(value) : value;
-        }, z.number().gte(0, "Tip percent cannot be less than 0").lte(100, "Tip percent cannot be more than 100")),
+        }, z.number().gte(0, "Tip percent cannot be less than 0").lte(100, "Max is 100%")),
       });
     default:
       return z.object({

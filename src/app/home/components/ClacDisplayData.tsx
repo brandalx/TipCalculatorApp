@@ -1,4 +1,3 @@
-import React from "react";
 interface CalcDisplayDataProps {
   result: number;
   type: "tip" | "total";
@@ -14,7 +13,7 @@ const ClacDisplayData = ({ result, type }: CalcDisplayDataProps) => {
       </div>
 
       <div>
-        <h2 className="text-xl text-[#1FC2AA]">$ {result}</h2>
+        <h2 className="text-xl text-[#1FC2AA]">$ {result.toFixed(2)}</h2>
       </div>
     </div>
   );
