@@ -8,6 +8,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { getFormSchema } from "@/lib/formSchema";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DollarSign, Percent, UserRound } from "lucide-react";
@@ -16,21 +17,11 @@ import { useForm, useFormState } from "react-hook-form";
 import z from "zod";
 interface CalcInputProps {
   handleChange: () => void;
-  type?: "bill" | "percent" | "people";
+  type: "bill" | "percent" | "people";
   label?: string;
   data?: number;
   setData: (value: number) => void;
 }
-
-const formSchema = z.object({
-  username: z.preprocess(
-    (a) => parseInt(z.string().parse(a), 10),
-    z
-      .number()
-      .gte(0, "Cant be less than 0")
-      .max(50, { message: "cannot be bigger than 50" })
-  ),
-});
 
 const CalcInput = ({
   type,
@@ -39,22 +30,22 @@ const CalcInput = ({
   setData,
   handleChange,
 }: CalcInputProps) => {
+  const formSchema = getFormSchema(type);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: data,
+      value: data,
     },
   });
 
   const { errors } = useFormState({ control: form.control });
 
   useEffect(() => {
-    form.reset({ username: data });
+    form.reset({ value: data });
   }, [data, form.reset]);
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    setData(values.username);
-
+    setData(values.value);
     handleChange();
   }
 
@@ -64,7 +55,7 @@ const CalcInput = ({
         <form onChange={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
             control={form.control}
-            name="username"
+            name="value"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
