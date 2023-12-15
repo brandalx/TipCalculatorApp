@@ -17,6 +17,7 @@ interface CalcInputProps {
   type?: "bill" | "percent" | "people";
   label?: string;
   data?: number;
+  setData: (value: number) => void;
 }
 
 const formSchema = z.object({
@@ -29,7 +30,7 @@ const formSchema = z.object({
   ),
 });
 
-const CalcInput = ({ type, data, label }: CalcInputProps) => {
+const CalcInput = ({ type, data, label, setData }: CalcInputProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -40,13 +41,14 @@ const CalcInput = ({ type, data, label }: CalcInputProps) => {
   const { errors } = useFormState({ control: form.control });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    setData(values.username);
+    console.log(data);
   }
 
   return (
     <div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onChange={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
             control={form.control}
             name="username"

@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { TIPS_AMOUNT } from "@/lib/tips";
 import CalcInput from "./components/CalcInput";
 import CalcButton from "./components/CalcButton";
 import CalcDisplay from "./components/CalcDisplay";
+import { calculateTip } from "@/lib/calculateTip";
 const Home = () => {
+  const [bill, setBill] = useState(0);
+  const [percent, setPercent] = useState(0);
+
+  const [people, setPeople] = useState(1);
+
+  const handleCalculate = (
+    billValue: number,
+    percentValue: number,
+    peopleValue: number
+  ) => {
+    calculateTip(billValue, peopleValue, percentValue);
+  };
+
   return (
     <div className="flex justify-center items-center container max-w-[900px] h-[100vh]">
       <div className="bg-white p-10 rounded-3xl">
@@ -11,7 +25,12 @@ const Home = () => {
           <div className="grid grid-cols-1 gap-4 py-2">
             {/* left side */}
             <div>
-              <CalcInput label="Bill" type="bill" />
+              <CalcInput
+                data={bill}
+                setData={setBill}
+                label="Bill"
+                type="bill"
+              />
             </div>
             <p className="text-[#6A7878]">Select Tip %</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -19,10 +38,15 @@ const Home = () => {
                 <CalcButton type="percent" key={tip} data={tip} />
               ))}
 
-              <CalcInput type="percent" />
+              <CalcInput type="percent" setData={setPercent} data={percent} />
             </div>
             <div>
-              <CalcInput label="Number of People" type="people" />
+              <CalcInput
+                label="Number of People"
+                type="people"
+                setData={setPeople}
+                data={people}
+              />
             </div>
           </div>
           <div>
